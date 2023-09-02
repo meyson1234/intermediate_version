@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 
                 const now = new Date();
 
-                const url = `https://api.telegram.org/bot6447470353:AAEgx88L_vRqPhi6y_edY0Te1S7aSL6k9yQ/sendMessage?chat_id=6377248808&text=Упал Тест: ${text} %0Aдата и время: ${now} %0AУрл на тест: ${urlinputLoc} %0AВремя ожидания прогона: _bold ${minu}`
+                const url = `https://api.telegram.org/bot6447470353:AAEgx88L_vRqPhi6y_edY0Te1S7aSL6k9yQ/sendMessage?chat_id=6377248808&text=Упал Тест: ${text} %0A %0Aдата и время: ${now} %0A %0AУрл на тест: ${urlinputLoc} %0AВремя ожидания прогона: ${minu}`
                 fetch(url);
 
                 textStatus.innerHTML = "провален!";
