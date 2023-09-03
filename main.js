@@ -1,3 +1,4 @@
+
 window.addEventListener('DOMContentLoaded',()=>{
 
     const btn = document.querySelector('#buttonTimer'),
@@ -18,13 +19,17 @@ window.addEventListener('DOMContentLoaded',()=>{
         // var minute = minu,
         //     sec = 120;
      
+        const now = new Date();
+        var milliseconds = Math.floor((minu % 1000) / 100),
+        seconds = Math.floor((minu / 1000) % 60),
+        minutes = Math.floor((minu / (1000 * 60)) % 60);
 
             interval =  setInterval(function () {
                 clearInterval(interval);
                 
-                const now = new Date();
+            
 
-                const url = `https://api.telegram.org/bot6447470353:AAEgx88L_vRqPhi6y_edY0Te1S7aSL6k9yQ/sendMessage?chat_id=6377248808&text=Упал Тест: ${text} %0A %0Aдата и время: ${now} %0A %0AУрл на тест: ${urlinputLoc} %0AВремя ожидания прогона: ${minu}`
+                const url = `https://api.telegram.org/bot6447470353:AAEgx88L_vRqPhi6y_edY0Te1S7aSL6k9yQ/sendMessage?chat_id=6377248808&text=Упал Тест: ${text} %0A %0Aдата и время: ${now} %0A %0AУрл на тест: ${urlinputLoc} %0AВремя ожидания прогона: ${minu} млс ${minutes !== 0?'≈ ' + minutes + ' мин':''}`
                 fetch(url);
 
                 textStatus.innerHTML = "провален!";
@@ -84,4 +89,3 @@ window.addEventListener('DOMContentLoaded',()=>{
         
             })
 })
-
