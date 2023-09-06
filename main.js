@@ -1,6 +1,17 @@
 
 window.addEventListener('DOMContentLoaded',()=>{
-
+    function isJsonString(str) {
+        try {
+            const p = JSON.parse(str).package_version
+            
+            return p;
+        } catch () {
+            return '';
+        }
+    }
+  
+    
+    
     const btn = document.querySelector('#buttonTimer'),
           textStatus = document.getElementById("timer");;
 
@@ -9,17 +20,18 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     const inputNAme = document.querySelector('#nameInp'),
           inputUrl = document.querySelector('#urlInp'),
+          NodeVersion = document.querySelector('#NodeVersionInp'),
           inputTime = document.querySelector('#timeInp');
-
-    const start = (minu = 300000, text= 'долбаеб а текст кто будет писать ?',urlinputLoc = 'курва') => {
+          
+    const start = (minu = 300000, text= 'долбаеб а текст кто будет писать ?',urlinputLoc = 'курва', vers = '') => {
         console.log(typeof minu)
         console.log(text)
         textStatus.innerHTML = "бегает!";
         textStatus.style.background = 'burlywood'
-        // var minute = minu,
-        //     sec = 120;
-     
-        const now = new Date();
+   
+        const now = new Date(),
+              version = isJsonString(vers);
+
         var milliseconds = Math.floor((minu % 1000) / 100),
         seconds = Math.floor((minu / 1000) % 60),
         minutes = Math.floor((minu / (1000 * 60)) % 60);
@@ -27,9 +39,8 @@ window.addEventListener('DOMContentLoaded',()=>{
             interval =  setInterval(function () {
                 clearInterval(interval);
                 
-            
-
-                const url = `https://api.telegram.org/bot6447470353:AAEgx88L_vRqPhi6y_edY0Te1S7aSL6k9yQ/sendMessage?chat_id=-982106318&text=Упал Тест: ${text} %0A %0Aдата и время: ${now} %0A %0AУрл на тест: ${urlinputLoc} %0AВремя ожидания прогона: ${minu} млс ${minutes !== 0?'≈ ' + minutes + ' мин':''}`
+              
+                const url = `https://api.telegram.org/bot6447470353:AAEgx88L_vRqPhi6y_edY0Te1S7aSL6k9yQ/sendMessage?chat_id=-982106318&text=Упал Тест: ${text} %0A %0Aдата и время: ${now} %0A %0AУрл на тест: ${urlinputLoc} %0AВремя ожидания прогона: ${minu} млс ${minutes !== 0?'≈ ' + minutes + ' мин':''} %0A %0AВерсия ноды: ${version}`
                 fetch(url);
 
                 textStatus.innerHTML = "провален!";
@@ -56,6 +67,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             console.log(e);
             const inputNAme = document.querySelector('#nameInp'),
                   inputTime = document.querySelector('#timeInp'),
+                  nodeVersion = document.querySelector('#NodeVersionInp'),
                   inputUrl = document.querySelector('#urlInp');
 
             if(!btn.classList.contains('active')){
@@ -64,7 +76,11 @@ window.addEventListener('DOMContentLoaded',()=>{
                 btn.classList.add('active');
                 console.log(inputTime.value,inputNAme.value);
 
-                start(inputTime.value == ''?undefined:inputTime.value,inputNAme.value == ''?undefined:inputNAme.value, inputUrl.value ==''?undefined:inputUrl.value);
+                start(inputTime.value == ''?undefined:inputTime.value,
+                      inputNAme.value == ''?undefined:inputNAme.value, 
+                      inputUrl.value ==''?undefined:inputUrl.value, 
+                      nodeVersion.value == ''?undefined:nodeVersion.value
+                );
                 
                 inputTime.setAttribute('disabled',true);
                 inputNAme.setAttribute('disabled',true);
