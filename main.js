@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             const p = JSON.parse(str).package_version
             
             return p;
-        } catch () {
+        } catch (e) {
             return '';
         }
     }
