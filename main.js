@@ -48,6 +48,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 
                 inputTime.removeAttribute('disabled');
                 inputNAme.removeAttribute('disabled');
+                NodeVersion.removeAttribute('disabled');
                 inputUrl.removeAttribute('disabled');
 
                 btn.classList.remove('active');
@@ -85,19 +86,24 @@ window.addEventListener('DOMContentLoaded',()=>{
                 inputTime.setAttribute('disabled',true);
                 inputNAme.setAttribute('disabled',true);
                 inputUrl.setAttribute('disabled',true);
+                NodeVersion.setAttribute('disabled',true);
 
                 inputTime.value = '';
                 inputNAme.value = '';
                 inputUrl.value = '';
+                NodeVersion.value = '';
 
                 
             } else {
                 inputTime.value = '';
                 inputNAme.value = '';
                 inputUrl.value = '';
+                NodeVersion.value = '';
+
                 inputTime.removeAttribute('disabled');
                 inputNAme.removeAttribute('disabled');
                 inputUrl.removeAttribute('disabled');
+                NodeVersion.removeAttribute('disabled');
                 btn.innerHTML = 'Старт'
                 btn.classList.remove('active');
                 stop();
