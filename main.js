@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded',()=>{
           NodeVersion = document.querySelector('#NodeVersionInp'),
           inputTime = document.querySelector('#timeInp');
           
-    const start = (minu = 300000, text= 'а текст кто будет писать ?',urlinputLoc = 'Нет ссылки! я без ссылки как кот без хвоста!', vers = '') => {
+    const start = (minu = 300000, text= 'а текст кто будет писать ?',urlinputLoc = 'Нет ссылки! я без ссылки как кот без миски!', vers = '') => {
         console.log(typeof minu)
         console.log(text)
         textStatus.innerHTML = "бегает!";
